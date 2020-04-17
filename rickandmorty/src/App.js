@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import Pagination from './components/Pagination/Pagination.component';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen.component';
 import CharacterList from './components/Character/CharacterList.component';
 
@@ -22,13 +23,19 @@ const App = () => {
       .catch(err => {
         debugger;
       })
-  }, []);
+  }, [pageNumber]);
+
+  const changePage = (evt, nextPageNumber) => {    
+    evt.preventDefault();
+    return setPageNumber(pageNumber + nextPageNumber);
+  } 
 
   if(!charactersData) { return <LoadingScreen /> }
 
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      <Pagination clickHandler={changePage} pageNumber={pageNumber}/>
       <CharacterList charactersData={charactersData.results}/>
     </div>
   );
