@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './App.css';
+import axios from 'axios';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen.component';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -21,6 +22,8 @@ const App = () => {
         debugger;
       })
   }, []);
+
+  if(!charactersData) { return <LoadingScreen /> }
 
   return (
     <div className="App">
