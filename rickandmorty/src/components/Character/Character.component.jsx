@@ -7,7 +7,7 @@ import {
 
 const Character = ({ characterData }) => {
   return(
-    <div style={{width: "30%"}}>
+    <div style={{width: "30%", margin: "3vh 0"}}>
       <Card>
         <CardImg top width="100%" src={characterData.image} alt="Card image cap" />
         <CardBody>
